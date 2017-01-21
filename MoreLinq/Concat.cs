@@ -15,12 +15,11 @@
 // limitations under the License.
 #endregion
 
-using LinqEnumerable = System.Linq.Enumerable;
-
 namespace MoreLinq
 {
     using System;
     using System.Collections.Generic;
+    using LinqEnumerable = System.Linq.Enumerable;
 
     static partial class MoreEnumerable
     {
@@ -35,7 +34,7 @@ namespace MoreLinq
         
         public static IEnumerable<T> Concat<T>(this T head, IEnumerable<T> tail)
         {
-            if (tail == null) throw new ArgumentNullException("tail");
+            if (tail == null) throw new ArgumentNullException(nameof(tail));
             return tail.Prepend(head);
         }
 
@@ -50,7 +49,7 @@ namespace MoreLinq
         
         public static IEnumerable<T> Concat<T>(this IEnumerable<T> head, T tail)
         {
-            if (head == null) throw new ArgumentNullException("head");
+            if (head == null) throw new ArgumentNullException(nameof(head));
             return LinqEnumerable.Concat(head, LinqEnumerable.Repeat(tail, 1));
         }
     }

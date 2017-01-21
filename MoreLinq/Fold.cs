@@ -1,6 +1,6 @@
 #region License and Terms
 // MoreLINQ - Extensions to LINQ to Objects
-// Copyright (c) 2008 Jonathan Skeet. All rights reserved.
+// Copyright (c) 2013 Atif Aziz. All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ namespace MoreLinq
             Func<T, T, T, TResult> folder3,
             Func<T, T, T, T, TResult> folder4)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             if (   count == 1 && folder1 == null
                 || count == 2 && folder2 == null
                 || count == 3 && folder3 == null

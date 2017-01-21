@@ -23,20 +23,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Extensions to LINQ to Objects")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MoreLINQ")]
-[assembly: AssemblyCopyright("Copyright \u00a9 2008 Jonathan Skeet. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
-// Version numbers
-//
-// The build and revision number reflect the date and time
-// of a build, using the follow scheme:
-//
-// bld = months_since_2000 x 100 + day_of_month
-// rev = utc_hours_since_midnight + utc_minutes
-
-[assembly: AssemblyVersion("2.0.17511.0")]
-[assembly: AssemblyFileVersion("2.0.17511.620")]
 
 // Debug or release configuration?
 

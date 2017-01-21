@@ -1,6 +1,6 @@
 #region License and Terms
 // MoreLINQ - Extensions to LINQ to Objects
-// Copyright (c) 2008 Jonathan Skeet. All rights reserved.
+// Copyright (c) 2009 Atif Aziz. All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,12 +15,11 @@
 // limitations under the License.
 #endregion
 
-using LinqEnumerable = System.Linq.Enumerable;
-
 namespace MoreLinq
 {
     using System;
     using System.Collections.Generic;
+    using LinqEnumerable = System.Linq.Enumerable;
 
     static partial class MoreEnumerable
     {
@@ -45,7 +44,7 @@ namespace MoreLinq
 
         public static IEnumerable<TSource> Prepend<TSource>(this IEnumerable<TSource> source, TSource value)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             return LinqEnumerable.Concat(LinqEnumerable.Repeat(value, 1), source);
         }
     }

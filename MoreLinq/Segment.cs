@@ -1,6 +1,6 @@
 #region License and Terms
 // MoreLINQ - Extensions to LINQ to Objects
-// Copyright (c) 2008 Jonathan Skeet. All rights reserved.
+// Copyright (c) 2010 Leopold Bushkin. All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ namespace MoreLinq
         
         public static IEnumerable<IEnumerable<T>> Segment<T>(this IEnumerable<T> source, Func<T, bool> newSegmentPredicate)
         {
-            if (newSegmentPredicate == null) throw new ArgumentNullException("newSegmentPredicate");
+            if (newSegmentPredicate == null) throw new ArgumentNullException(nameof(newSegmentPredicate));
 
             return Segment(source, (curr, prev, index) => newSegmentPredicate(curr));
         }
@@ -53,7 +53,7 @@ namespace MoreLinq
         
         public static IEnumerable<IEnumerable<T>> Segment<T>(this IEnumerable<T> source, Func<T, int, bool> newSegmentPredicate)
         {
-            if (newSegmentPredicate == null) throw new ArgumentNullException("newSegmentPredicate");
+            if (newSegmentPredicate == null) throw new ArgumentNullException(nameof(newSegmentPredicate));
 
             return Segment(source, (curr, prev, index) => newSegmentPredicate(curr, index));
         }
@@ -71,8 +71,8 @@ namespace MoreLinq
         
         public static IEnumerable<IEnumerable<T>> Segment<T>(this IEnumerable<T> source, Func<T, T, int, bool> newSegmentPredicate)
         {
-            if (source == null) throw new ArgumentNullException("source");
-            if (newSegmentPredicate == null) throw new ArgumentNullException("newSegmentPredicate");
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (newSegmentPredicate == null) throw new ArgumentNullException(nameof(newSegmentPredicate));
 
             return SegmentImpl(source, newSegmentPredicate);
         }

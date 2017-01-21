@@ -1,6 +1,6 @@
 #region License and Terms
 // MoreLINQ - Extensions to LINQ to Objects
-// Copyright (c) 2008 Jonathan Skeet. All rights reserved.
+// Copyright (c) 2009 Konrad Rudolph. All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -55,8 +55,8 @@ namespace MoreLinq
         public static IEnumerable<TSource> Scan<TSource>(this IEnumerable<TSource> source,
             Func<TSource, TSource, TSource> transformation)
         {
-            if (source == null) throw new ArgumentNullException("source");
-            if (transformation == null) throw new ArgumentNullException("transformation");
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (transformation == null) throw new ArgumentNullException(nameof(transformation));
             return ScanImpl(source, transformation);
         }
 
@@ -65,7 +65,7 @@ namespace MoreLinq
             using (var i = source.GetEnumerator())
             {
                 if (!i.MoveNext())
-                    throw new InvalidOperationException("Sequence contains no elements.");
+                    yield break;
 
                 var aggregator = i.Current;
 
@@ -102,8 +102,8 @@ namespace MoreLinq
         public static IEnumerable<TState> Scan<TSource, TState>(this IEnumerable<TSource> source,
             TState seed, Func<TState, TSource, TState> transformation)
         {
-            if (source == null) throw new ArgumentNullException("source");
-            if (transformation == null) throw new ArgumentNullException("transformation");
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (transformation == null) throw new ArgumentNullException(nameof(transformation));
             return ScanImpl(source, seed, transformation);
         }
 

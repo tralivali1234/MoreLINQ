@@ -1,6 +1,6 @@
 #region License and Terms
 // MoreLINQ - Extensions to LINQ to Objects
-// Copyright (c) 2008 Jonathan Skeet. All rights reserved.
+// Copyright (c) 2010 Leopold Bushkin. All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -39,8 +39,8 @@ namespace MoreLinq
         
         public static IEnumerable<TResult> Incremental<TSource, TResult>(this IEnumerable<TSource> sequence, Func<TSource, TSource, TResult> resultSelector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (resultSelector == null) throw new ArgumentNullException("resultSelector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (resultSelector == null) throw new ArgumentNullException(nameof(resultSelector));
 
             return IncrementalImpl(sequence, (prev, next, index) => resultSelector(prev, next));
         }
@@ -62,8 +62,8 @@ namespace MoreLinq
         
         public static IEnumerable<TResult> Incremental<TSource, TResult>(this IEnumerable<TSource> sequence, Func<TSource, TSource, int, TResult> resultSelector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (resultSelector == null) throw new ArgumentNullException("resultSelector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (resultSelector == null) throw new ArgumentNullException(nameof(resultSelector));
 
             return IncrementalImpl(sequence, resultSelector);
         }

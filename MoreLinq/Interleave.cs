@@ -1,6 +1,6 @@
 #region License and Terms
 // MoreLINQ - Extensions to LINQ to Objects
-// Copyright (c) 2008 Jonathan Skeet. All rights reserved.
+// Copyright (c) 2010 Leopold Bushkin. All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -73,10 +73,10 @@ namespace MoreLinq
         
         private static IEnumerable<T> Interleave<T>(this IEnumerable<T> sequence, ImbalancedInterleaveStrategy imbalanceStrategy, params IEnumerable<T>[] otherSequences)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (otherSequences == null) throw new ArgumentNullException("otherSequences");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (otherSequences == null) throw new ArgumentNullException(nameof(otherSequences));
             if (otherSequences.Any(s => s == null))
-                throw new ArgumentNullException("otherSequences", "One or more sequences passed to Interleave was null.");
+                throw new ArgumentNullException(nameof(otherSequences), "One or more sequences passed to Interleave was null.");
 
             return InterleaveImpl(new[] { sequence }.Concat(otherSequences), imbalanceStrategy);
         }

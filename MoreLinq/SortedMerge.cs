@@ -1,6 +1,6 @@
 #region License and Terms
 // MoreLINQ - Extensions to LINQ to Objects
-// Copyright (c) 2008 Jonathan Skeet. All rights reserved.
+// Copyright (c) 2010 Leopold Bushkin. All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -67,8 +67,8 @@ namespace MoreLinq
         
         public static IEnumerable<TSource> SortedMerge<TSource>(this IEnumerable<TSource> source, OrderByDirection direction, IComparer<TSource> comparer, params IEnumerable<TSource>[] otherSequences)
         {
-            if (source == null) throw new ArgumentNullException("source");
-            if (otherSequences == null) throw new ArgumentNullException("otherSequences");
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (otherSequences == null) throw new ArgumentNullException(nameof(otherSequences));
 
             if (otherSequences.Length == 0)
                 return source; // optimization for when otherSequences is empty
